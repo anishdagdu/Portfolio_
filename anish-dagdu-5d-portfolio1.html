@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anish Dagdu — Performance & Growth Marketing Leader</title>
+<meta name="description" content="Anish Dagdu — Performance & Growth Marketing Leader. Full-funnel paid acquisition that beats plan: 2.5× ROAS, $1M+/mo budgets, 70+ markets.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+<style>
+:root{
+  --accent:#C9F24D; --accent-2:#7DD3FC; --accent-ink:#0B0F0A;
+  --bg:#0A0D08; --bg2:#0E120B; --surface:rgba(255,255,255,.045); --surface-solid:#13180F;
+  --border:rgba(255,255,255,.10); --text:#ECF1E6; --muted:#9AA694; --shadow:0 18px 50px rgba(0,0,0,.45);
+  --glass:rgba(18,23,14,.55); --ring:#C9F24D;
+}
+[data-theme="light"]{
+  --accent:#5C8A00; --accent-2:#0369a1; --accent-ink:#FFFFFF;
+  --bg:#F3F6EE; --bg2:#ECF0E3; --surface:rgba(20,30,10,.04); --surface-solid:#FFFFFF;
+  --border:rgba(20,30,10,.12); --text:#161B10; --muted:#5B6451; --shadow:0 16px 40px rgba(40,50,20,.12);
+  --glass:rgba(255,255,255,.7); --ring:#5C8A00;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);
+  color:var(--text);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;
+  transition:background .4s ease,color .4s ease}
+h1,h2,h3,.display{font-family:"Space Grotesk","Inter",sans-serif;letter-spacing:-.02em;line-height:1.08}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+.wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+section{position:relative;padding:92px 0;scroll-margin-top:72px}
+.eyebrow{font-family:"Space Grotesk",sans-serif;font-size:12px;font-weight:700;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.sec-title{font-size:clamp(26px,4vw,40px);font-weight:700;margin-bottom:10px}
+.sec-sub{color:var(--muted);max-width:620px;margin-bottom:42px;font-size:16px}
+:focus-visible{outline:3px solid var(--ring);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--accent);color:var(--accent-ink);padding:10px 16px;z-index:200;border-radius:0 0 8px 0}
+.skip:focus{left:0}
+
+/* ---------- NAV ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  background:var(--glass);border-bottom:1px solid var(--border);transition:background .4s}
+.nav .row{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:15px}
+.logo .dot{width:30px;height:30px;border-radius:9px;background:var(--accent);color:var(--accent-ink);
+  display:grid;place-items:center;font-weight:700;font-size:14px}
+.nav-links{display:flex;gap:6px;align-items:center}
+.nav-links a{font-size:13.5px;font-weight:600;color:var(--muted);padding:8px 12px;border-radius:8px;
+  transition:color .2s,background .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-links a.active{color:var(--accent)}
+.nav-links a.active::after{content:"";display:block;height:2px;background:var(--accent);border-radius:2px;margin-top:3px;
+  animation:growline .3s ease}
+@keyframes growline{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.toggle{display:grid;place-items:center;width:40px;height:40px;border-radius:10px;border:1px solid var(--border);
+  background:var(--surface);color:var(--text);cursor:pointer;font-size:17px;transition:.2s}
+.toggle:hover{border-color:var(--accent);color:var(--accent)}
+.menu-btn{display:none;width:40px;height:40px;border-radius:10px;border:1px solid var(--border);background:var(--surface);
+  color:var(--text);cursor:pointer;font-size:18px}
+.nav-cta{font-size:13.5px;font-weight:700;padding:9px 16px;border-radius:10px;background:var(--accent);color:var(--accent-ink);
+  transition:transform .2s,box-shadow .2s}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(201,242,77,.3)}
+
+/* ---------- HERO ---------- */
+.hero{padding:150px 0 90px;min-height:92vh;display:flex;align-items:center;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(60px);opacity:.5;z-index:0;pointer-events:none}
+.orb.a{width:520px;height:520px;background:radial-gradient(circle,rgba(201,242,77,.5),transparent 65%);top:-160px;right:-120px}
+.orb.b{width:440px;height:440px;background:radial-gradient(circle,rgba(125,211,252,.35),transparent 65%);bottom:-180px;left:-140px}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.25fr .9fr;gap:48px;align-items:center;width:100%}
+.hero .avail{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--muted);
+  border:1px solid var(--border);background:var(--surface);padding:6px 13px;border-radius:999px;margin-bottom:22px}
+.hero .avail .live{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(201,242,77,.6);
+  animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(201,242,77,.5)}70%{box-shadow:0 0 0 9px rgba(201,242,77,0)}100%{box-shadow:0 0 0 0 rgba(201,242,77,0)}}
+.hero h1{font-size:clamp(38px,7vw,68px);font-weight:700;margin-bottom:8px}
+.hero h1 .hl{color:var(--accent)}
+.hero .role{font-family:"Space Grotesk",sans-serif;font-size:clamp(16px,2.4vw,21px);font-weight:600;color:var(--muted);margin-bottom:20px}
+.hero .vp{font-size:clamp(16px,2.2vw,19px);color:var(--text);max-width:540px;margin-bottom:30px}
+.hero .vp b{color:var(--accent)}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:14.5px;padding:13px 22px;border-radius:12px;cursor:pointer;
+  border:1px solid var(--border);background:var(--surface);color:var(--text);transition:transform .2s,box-shadow .2s,border-color .2s;display:inline-flex;align-items:center;gap:9px}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn.primary:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(201,242,77,.32)}
+.btn:hover{transform:translateY(-3px);border-color:var(--accent)}
+/* hero stat card */
+.statcard{position:relative;z-index:2;background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1px solid var(--border);border-radius:22px;padding:28px;box-shadow:var(--shadow);transform-style:preserve-3d}
+.statcard .label{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.statcard .big{font-family:"Space Grotesk",sans-serif;font-size:clamp(54px,9vw,78px);font-weight:700;color:var(--accent);
+  line-height:1;margin:6px 0 2px}
+.statcard .cap{color:var(--text);font-weight:600;margin-bottom:20px}
+.statrow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.statmini{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:13px 14px}
+.statmini .n{font-family:"Space Grotesk",sans-serif;font-size:24px;font-weight:700;color:var(--text)}
+.statmini .t{font-size:11.5px;color:var(--muted);font-weight:600;margin-top:2px}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .38s ease,transform .38s ease}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.06s}.reveal.d2{transition-delay:.12s}.reveal.d3{transition-delay:.18s}.reveal.d4{transition-delay:.24s}
+
+/* ---------- METRICS ---------- */
+.metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:46px}
+.metric{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:24px 20px;position:relative;overflow:hidden;
+  transition:transform .25s,border-color .25s,box-shadow .25s}
+.metric:hover{border-color:var(--accent);box-shadow:var(--shadow)}
+.metric .num{font-family:"Space Grotesk",sans-serif;font-size:clamp(30px,4.5vw,42px);font-weight:700;color:var(--accent);line-height:1}
+.metric .cap{font-size:13.5px;color:var(--muted);font-weight:600;margin-top:8px}
+/* data storytelling bars */
+.bars{display:grid;grid-template-columns:1fr 1fr;gap:26px 40px}
+.bar-item .bar-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.bar-item .bar-name{font-weight:600;font-size:14.5px}
+.bar-item .bar-val{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:20px;color:var(--accent)}
+.track{height:11px;background:var(--surface);border:1px solid var(--border);border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
+.bar-item .sub{font-size:12px;color:var(--muted);margin-top:6px}
+
+/* ---------- CASE STUDIES ---------- */
+.cases{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.case{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:24px;cursor:pointer;
+  transition:transform .25s ease,border-color .25s,box-shadow .25s;transform-style:preserve-3d;will-change:transform}
+.case:hover{border-color:var(--accent)}
+.case .tagrow{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.case .sector{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.case .chev{color:var(--accent);transition:transform .3s;font-size:14px}
+.case[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.case .headline{font-family:"Space Grotesk",sans-serif;font-size:clamp(30px,4vw,40px);font-weight:700;color:var(--accent);line-height:1}
+.case .h-cap{font-size:13px;color:var(--muted);font-weight:600;margin:2px 0 12px}
+.case h3{font-size:18px;font-weight:700;margin-bottom:6px}
+.case .one{font-size:14px;color:var(--muted)}
+.case .detail{max-height:0;overflow:hidden;transition:max-height .38s ease}
+.case[aria-expanded="true"] .detail{max-height:760px}
+.car{margin-top:18px;border-top:1px solid var(--border);padding-top:16px;display:grid;gap:12px}
+.car .blk{display:grid;grid-template-columns:88px 1fr;gap:12px;align-items:start}
+.car .k{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);padding-top:2px}
+.car .v{font-size:14px;color:var(--text)}
+.mini-metrics{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.mini-metrics span{font-size:12px;font-weight:600;background:var(--surface);border:1px solid var(--border);
+  padding:5px 10px;border-radius:8px;color:var(--text)}
+.hint{font-size:12px;color:var(--muted);margin-top:14px;display:flex;align-items:center;gap:6px}
+.case[aria-expanded="true"] .hint{display:none}
+
+/* ---------- SKILLS ---------- */
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.skillcard{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:22px;transition:transform .25s,border-color .25s}
+.skillcard:hover{border-color:var(--accent);transform:translateY(-4px)}
+.skillcard .ic{width:42px;height:42px;border-radius:12px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;
+  font-size:20px;margin-bottom:14px}
+.skillcard h3{font-size:16px;margin-bottom:12px}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{font-size:12.5px;font-weight:600;background:var(--surface-solid);border:1px solid var(--border);
+  padding:6px 11px;border-radius:8px;color:var(--text);transition:.2s}
+.chip:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ---------- TIMELINE ---------- */
+.timeline{position:relative;max-width:820px;margin:0 auto;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:2px;
+  background:linear-gradient(var(--accent),transparent)}
+.tnode{position:relative;padding-bottom:30px}
+.tnode::before{content:"";position:absolute;left:-32px;top:5px;width:16px;height:16px;border-radius:50%;
+  background:var(--bg);border:3px solid var(--accent)}
+.tnode .tt{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px}
+.tnode h3{font-size:17px}
+.tnode .co{color:var(--accent);font-weight:600;font-size:15px}
+.tnode .dt{font-size:12.5px;color:var(--muted);font-weight:600;margin-left:auto}
+.tnode p{font-size:14px;color:var(--muted);margin-top:5px}
+
+/* ---------- CONTACT ---------- */
+.contact{text-align:center}
+.contact .big{font-size:clamp(30px,5vw,52px);font-weight:700;margin-bottom:14px}
+.contact .big .hl{color:var(--accent)}
+.contact .sub{color:var(--muted);max-width:540px;margin:0 auto 34px;font-size:17px}
+.contact-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:760px;margin:0 auto 30px}
+.cc{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:24px 18px;transition:transform .25s,border-color .25s;display:block}
+.cc:hover{transform:translateY(-5px);border-color:var(--accent)}
+.cc .ic{font-size:24px;margin-bottom:10px}
+.cc .k{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.cc .v{font-weight:600;font-size:14.5px;margin-top:4px;word-break:break-word}
+.loc{color:var(--muted);font-size:14px}
+footer{border-top:1px solid var(--border);padding:26px 0;text-align:center;color:var(--muted);font-size:13px}
+
+/* ---------- DASHBOARDS ---------- */
+.dash-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.dash-tabs button{font-family:"Space Grotesk",sans-serif;font-size:13px;font-weight:600;color:var(--muted);
+  background:var(--surface);border:1px solid var(--border);padding:9px 15px;border-radius:10px;cursor:pointer;transition:.2s}
+.dash-tabs button:hover{color:var(--text);border-color:var(--accent)}
+.dash-tabs button.active{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.dash-panel{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:24px;box-shadow:var(--shadow)}
+.dash-panel .d-eyebrow{font-family:"Space Grotesk",sans-serif;font-size:11px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.dash-panel h3{font-size:20px;margin-bottom:6px}
+.dash-panel .d-lead{color:var(--muted);font-size:14px;margin-bottom:18px;max-width:760px}
+.d-toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px;font-size:12.5px;color:var(--muted)}
+.d-toolbar select{font-size:12.5px;padding:7px 10px;border:1px solid var(--border);border-radius:8px;background:var(--surface-solid);color:var(--text)}
+.d-tablewrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px}
+.d-tablewrap table{border-collapse:collapse;width:100%;font-size:12.5px;min-width:620px}
+.d-tablewrap thead th{background:var(--surface-solid);color:var(--text);text-align:left;padding:11px 12px;font-weight:700;
+  font-size:11px;letter-spacing:.03em;text-transform:uppercase;cursor:pointer;white-space:nowrap;border-bottom:1px solid var(--border)}
+.d-tablewrap thead th .ar{opacity:.5;font-size:9px;margin-left:3px}
+.d-tablewrap tbody td{padding:9px 12px;border-bottom:1px solid var(--border);white-space:nowrap}
+.d-tablewrap tbody tr:hover{background:var(--surface)}
+.d-tablewrap td.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.d-pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:11px;font-weight:700;
+  background:var(--surface-solid);border:1px solid var(--border);color:var(--text)}
+.d-charts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+.d-chartcard{background:var(--surface-solid);border:1px solid var(--border);border-radius:14px;padding:16px}
+.d-chartbox{position:relative;height:260px}
+.d-note{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:10px;
+  padding:11px 14px;font-size:12.5px;color:var(--text);margin-top:16px}
+.d-cols2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:6px}
+.d-seg{border:1px solid var(--border);border-radius:11px;padding:12px 14px;margin-bottom:10px;background:var(--surface-solid)}
+.d-seg h4{font-size:13.5px;margin-bottom:3px}.d-seg .src{font-size:11px;color:var(--muted)}.d-seg .perf{font-size:12px;margin-top:5px;color:var(--accent);font-weight:600}
+.d-funnel{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.d-ff{flex:1;min-width:150px;border-radius:12px;padding:14px;border:1px solid var(--border);background:var(--surface-solid)}
+.d-ff .t{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.d-ff .b{font-family:"Space Grotesk",sans-serif;font-size:22px;font-weight:700;color:var(--accent);margin-top:5px}
+.d-ff .s{font-size:11.5px;color:var(--muted);margin-top:3px}
+.d-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.d-kpi{background:var(--surface-solid);border:1px solid var(--border);border-radius:12px;padding:14px}
+.d-kpi .n{font-family:"Space Grotesk",sans-serif;font-size:22px;font-weight:700;color:var(--accent)}
+.d-kpi .t{font-size:11.5px;color:var(--muted);margin-top:3px}
+@media(max-width:760px){.d-charts,.d-cols2,.d-kpis{grid-template-columns:1fr}.d-kpis{grid-template-columns:1fr 1fr}}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:34px}
+  .statcard{order:-1}
+  .metrics-grid{grid-template-columns:repeat(2,1fr)}
+  .bars{grid-template-columns:1fr}
+  .cases{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:1fr}
+  .contact-cards{grid-template-columns:1fr}
+  .nav-links{position:fixed;top:64px;right:14px;left:14px;flex-direction:column;align-items:stretch;gap:4px;
+    background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--border);
+    border-radius:14px;padding:10px;box-shadow:var(--shadow);display:none}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:11px 12px}
+  .nav-links .nav-cta{text-align:center}
+  .menu-btn{display:grid;place-items:center}
+}
+@media(max-width:480px){
+  .metrics-grid{grid-template-columns:1fr 1fr}
+  section{padding:64px 0}
+  .hero{padding:120px 0 60px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+  .fill{transition:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- NAV -->
+<header class="nav" aria-label="Primary">
+  <div class="wrap row">
+    <a class="logo" href="#hero" aria-label="Anish Dagdu home"><span class="dot" aria-hidden="true">AD</span>Anish Dagdu</a>
+    <nav class="nav-links" id="navlinks" aria-label="Section navigation">
+      <a href="#metrics">Impact</a>
+      <a href="#work">Case Studies</a>
+      <a href="#dashboards">Dashboards</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a class="nav-cta" href="#contact">Let's talk</a>
+    </nav>
+    <div style="display:flex;gap:10px;align-items:center">
+      <button class="toggle" id="themeBtn" aria-label="Switch to light mode" aria-pressed="false" title="Toggle theme">🌙</button>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navlinks">☰</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- HERO -->
+<section class="hero" id="hero" aria-label="Introduction">
+  <div class="orb a" data-par="0.18" aria-hidden="true"></div>
+  <div class="orb b" data-par="-0.12" aria-hidden="true"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="avail reveal"><span class="live" aria-hidden="true"></span>Open to roles · Finland · UK · Netherlands · Ireland</span>
+      <h1 class="reveal d1">Paid media that <span class="hl">beats plan</span> &amp; moves the business.</h1>
+      <p class="role reveal d2">Anish Dagdu — Performance &amp; Growth Marketing Leader</p>
+      <p class="vp reveal d3">9+ years building full-funnel paid-acquisition engines across automotive, pharma &amp; eCommerce —
+        optimised daily on <b>ROAS, CAC &amp; LTV</b> across 70+ global markets.</p>
+      <div class="hero-cta reveal d4">
+        <a class="btn primary" href="#work">View case studies →</a>
+        <a class="btn" href="#contact">Book a call</a>
+      </div>
+    </div>
+    <div class="statcard tilt reveal d2" aria-label="Headline metric">
+      <div class="label">Flagship EV launch · delivered vs plan</div>
+      <div class="big"><span class="count" data-target="695" data-pre="+" data-suf="%">+0%</span></div>
+      <div class="cap">launch-day search lift — from a standing start</div>
+      <div class="statrow">
+        <div class="statmini"><div class="n count" data-target="2.5" data-dec="1" data-suf="×">0×</div><div class="t">ROAS scaled YoY</div></div>
+        <div class="statmini"><div class="n count" data-target="5" data-suf="×">0×</div><div class="t">lead growth (BFSI)</div></div>
+        <div class="statmini"><div class="n count" data-target="1" data-pre="$" data-suf="M+">$0</div><div class="t">monthly budget</div></div>
+        <div class="statmini"><div class="n count" data-target="70" data-suf="+">0</div><div class="t">markets activated</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<section id="metrics" aria-label="Impact metrics">
+  <div class="wrap">
+    <div class="eyebrow reveal">By the numbers</div>
+    <h2 class="sec-title reveal">Impact, quantified</h2>
+    <p class="sec-sub reveal">Real delivered results across launches and performance accounts. Numbers count up as you scroll.</p>
+    <div class="metrics-grid">
+      <div class="metric tilt reveal"><div class="num count" data-target="2.5" data-dec="1" data-suf="×">0×</div><div class="cap">ROAS scaled year-on-year</div></div>
+      <div class="metric tilt reveal d1"><div class="num count" data-target="227" data-suf="%">0%</div><div class="cap">CTR delivered vs plan (2.3×)</div></div>
+      <div class="metric tilt reveal d2"><div class="num count" data-target="5" data-suf="×">0×</div><div class="cap">Qualified lead growth YoY</div></div>
+      <div class="metric tilt reveal d3"><div class="num count" data-target="38" data-pre="−" data-suf="%">0%</div><div class="cap">eCPM efficiency gain</div></div>
+    </div>
+
+    <div class="eyebrow reveal" style="margin-top:8px">Data storytelling</div>
+    <h2 class="sec-title reveal" style="margin-bottom:30px">Where the gains came from</h2>
+    <div class="bars">
+      <div class="bar-item reveal">
+        <div class="bar-head"><span class="bar-name">ROAS — full-funnel engine</span><span class="bar-val">2.5×</span></div>
+        <div class="track"><div class="fill" data-fill="83"></div></div>
+        <div class="sub">Peak 6.4× on 1P retargeting · audience-first targeting</div>
+      </div>
+      <div class="bar-item reveal d1">
+        <div class="bar-head"><span class="bar-name">CTR lift vs plan</span><span class="bar-val">227%</span></div>
+        <div class="track"><div class="fill" data-fill="91"></div></div>
+        <div class="sub">0.41% delivered vs 0.18% planned on EV launch</div>
+      </div>
+      <div class="bar-item reveal d2">
+        <div class="bar-head"><span class="bar-name">Budget scale managed</span><span class="bar-val">$1M+/mo</span></div>
+        <div class="track"><div class="fill" data-fill="86"></div></div>
+        <div class="sub">Plus £500K/mo UK-market consumer-electronics account</div>
+      </div>
+      <div class="bar-item reveal d3">
+        <div class="bar-head"><span class="bar-name">Lead growth YoY</span><span class="bar-val">5×</span></div>
+        <div class="track"><div class="fill" data-fill="88"></div></div>
+        <div class="sub">Audience-first + CDP-led acquisition</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="work" aria-label="Case studies">
+  <div class="wrap">
+    <div class="eyebrow reveal">Selected work · anonymised for confidentiality</div>
+    <h2 class="sec-title reveal">Case studies</h2>
+    <p class="sec-sub reveal">Each campaign as Challenge → Action → Result, headline number first. Tap a card to expand.</p>
+    <div class="cases" id="caseGrid"></div>
+  </div>
+</section>
+
+<!-- DASHBOARDS -->
+<section id="dashboards" aria-label="Interactive dashboards">
+  <div class="wrap">
+    <div class="eyebrow reveal">Interactive dashboards · read-only showcase</div>
+    <h2 class="sec-title reveal">How the results were engineered</h2>
+    <p class="sec-sub reveal">Five working analysis frameworks behind the campaigns — platform evaluation, audience strategy, creative testing and measurement. Sort any column; charts adapt to light/dark.</p>
+    <div class="dash-tabs reveal" id="dashTabs" role="tablist" aria-label="Dashboard selector">
+      <button class="active" role="tab" data-d="branding">Branding Platforms</button>
+      <button role="tab" data-d="performance">Performance Platforms</button>
+      <button role="tab" data-d="audience">Audience Framework</button>
+      <button role="tab" data-d="creative">Creative Testing</button>
+      <button role="tab" data-d="webmedia">Web ↔ Media</button>
+    </div>
+    <div class="dash-panel reveal" id="dashPanel" role="tabpanel" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" aria-label="Skills">
+  <div class="wrap">
+    <div class="eyebrow reveal">Capabilities</div>
+    <h2 class="sec-title reveal">Skills &amp; stack</h2>
+    <p class="sec-sub reveal">Full-funnel, platform-fluent, measurement-led.</p>
+    <div class="skills-grid" id="skillsGrid"></div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" aria-label="Experience">
+  <div class="wrap">
+    <div class="eyebrow reveal">Trajectory</div>
+    <h2 class="sec-title reveal">Experience</h2>
+    <p class="sec-sub reveal">Director-level paid &amp; growth leadership across global media networks.</p>
+    <div class="timeline" id="timeline"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact" aria-label="Contact">
+  <div class="wrap">
+    <div class="eyebrow reveal" style="text-align:center">Let's build something that beats plan</div>
+    <h2 class="big reveal">Ready to scale your <span class="hl">paid acquisition</span>?</h2>
+    <p class="sub reveal">EU work-authorised (Type A), based in Tampere, Finland — open to performance &amp; growth roles across the UK, Netherlands and Ireland.</p>
+    <div class="contact-cards">
+      <a class="cc tilt reveal" href="mailto:anishdagdu@gmail.com" aria-label="Email Anish">
+        <div class="ic" aria-hidden="true">✉️</div><div class="k">Email</div><div class="v">anishdagdu@gmail.com</div></a>
+      <a class="cc tilt reveal d1" href="https://www.linkedin.com/in/anish-dagdu-2554b4101/" target="_blank" rel="noopener" aria-label="LinkedIn profile">
+        <div class="ic" aria-hidden="true">in</div><div class="k">LinkedIn</div><div class="v">/anish-dagdu</div></a>
+      <a class="cc tilt reveal d2" href="tel:+358413252938" aria-label="Call Anish">
+        <div class="ic" aria-hidden="true">📞</div><div class="k">Phone</div><div class="v">+358 41 325 2938</div></a>
+    </div>
+    <p class="loc reveal">📍 Tampere, Finland · Valid Finnish Residence Permit (Type A)</p>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">© <span id="yr"></span> Anish Dagdu · Performance &amp; Growth Marketing · Built as a single-file interactive portfolio</div></footer>
+
+<script>
+/* ---------------- DATA ---------------- */
+const CASES=[
+  {sector:"Automotive · National EV Launch",headline:"+695%",hcap:"launch-day search lift",
+   title:"Zero-to-launch EV, nationally",one:"Phased pre-buzz → unveil → sustain across 17 platforms.",
+   challenge:"Launch a brand-new electric vehicle nationally and build awareness + consideration from a standing start, on a strict phased rollout.",
+   action:"Architected a 3-phase, 17-platform plan (YouTube, Meta, DV360, premium publishers) with premium-cohort targeting — elite transactors, reward-app users and high-rise-society audiences — wired to Brand-Lift and Search-Lift measurement.",
+   result:"Reach 116% of plan, CTR 0.41% (227% of plan), eCPM −38%, launch-day search +695%, site pageviews +1,065%, BLS favorability +2.8%.",
+   metrics:["Reach 165M (116%)","CTR 227% of plan","eCPM −38%","Pageviews +1,065%"]},
+  {sector:"BFSI · Lead Generation",headline:"5X",hcap:"monthly leads growth",
+   title:"Scaling leads without scaling spend",one:"Google Ads + Meta rebuild across a $310K/mo budget.",
+   challenge:"Scale qualified leads for a BFSI client hamstrung by high cost per lead, an un-organised campaign structure, and CRM/GTM tracking inconsistencies causing attribution issues.",
+   action:"Rebuilt Google Ads architecture with Brand/Generic/Competitor keyword segmentation and geo-wise campaigns, layered Performance Max with 1PD &amp; 3PD audience signals, tested Meta creative formats (static, GIF, HTML5 rich media, carousel) against Lookalike/3PD/CDP audiences, and corrected GTM tags plus Meta/Google Pixel &amp; CAPI integration to fix CRM lead-loss.",
+   result:"Monthly leads scaled 5X — 17,000 to 85,000 — on a 40% budget increase, with CTR up 40% YoY, share of voice up 45%, and cost per lead down 70%.",
+   metrics:["Leads 17K→85K (5X)","CPL −70%","CTR +40% YoY","SOV +45%"]},
+  {sector:"QSR · Multi-Market Performance",headline:"+43%",hcap:"bookings vs target, KSA",
+   title:"Beating targets while cutting CPA",one:"Google + Meta + Snapchat + TikTok across 6 MENA markets.",
+   challenge:"Drive booking growth for a multi-market QSR account (KSA, UAE, Qatar, Bahrain, Jordan, Lebanon) through a mid-quarter account transition and a platform attribution change that disrupted reported bookings.",
+   action:"Rebuilt KSA campaign architecture across Google, Meta, Snapchat and TikTok; shifted bidding from TROAS to TCPA to scale generic campaigns; ran audience-split and remarketing tests through a Ramadan trading period; and diagnosed attribution-change swings across channels.",
+   result:"KSA delivered 432,832 bookings against a 302,082 target (+43%) while spend scaled a controlled 23% over plan and CPA fell 14% (4.24→3.64) — Google alone contributed 44% of bookings at the lowest CPA of any channel.",
+   metrics:["Bookings +43% vs target","CPA −14%","Spend +23% vs plan","6 MENA markets"]},
+  {sector:"Automotive Accessories · Full-Funnel Growth",headline:"+24%",hcap:"ROAS growth — Google + Meta",
+   title:"Turning SEO and paid into ROAS growth",one:"SEO, Search &amp; Meta working as one funnel for genuine accessories.",
+   challenge:"Grow ROAS and order volume for a genuine parts &amp; accessories business, where SEO discovery, Search intent campaigns, and Meta retargeting were running as disconnected efforts with an unreliable conversion signal.",
+   action:"Rebuilt SEO foundations — 1,500+ meta tags optimised, 8,000+ images optimised, schema markup for rich results, and 70+ off-page content pieces — restructured Google Search &amp; Shopping campaigns, shifted bidding from Target ROAS to Maximise Conversions, and fixed Meta's pixel tracking to restore accurate conversion and ROAS reporting.",
+   result:"Lifted consideration-stage ROAS 24%, alongside ₹28Mn in Google + Meta revenue and 15.6k orders, with SEO traffic up 39%, organic impressions up 44%, clicks up 24% and share of voice up 43%.",
+   metrics:["ROAS +24%","Revenue ₹28Mn","Orders 15.6k","SOV +43%"]},
+  {sector:"Automotive · Commercial Vehicle",headline:"+67%",hcap:"CDP CTR vs interest targeting",
+   title:"Festive always-on for an SCV",one:"8 regional festivals · deterministic + appographic signals.",
+   challenge:"Drive consideration for a small commercial vehicle across 8 regional festivals, reaching a niche owner-operator B2B audience.",
+   action:"Built festival-by-festival threshold plans using CDP audiences, deterministic geo signals (transport hubs, fuel spend) and appographic targeting (mobility partner apps), with Google Demand Gen for high-intent capture.",
+   result:"CDP audiences hit 0.77% CTR vs 0.46% on interest targeting (+67%); short-form video reached 85.4% VTR; 204M reach delivered at a ₹53 eCPM.",
+   metrics:["CDP +67% CTR","VTR 85.4%","204M reach","8 festivals"]},
+  {sector:"Pharma · Global Media Operations",headline:"70+",hcap:"markets · 24-hour delivery model",
+   title:"Governing media at global scale",one:"GCC model across NA, UK, EMEA, LATAM & APAC.",
+   challenge:"Standardise and govern paid-media delivery for a global pharma major across 70+ markets in a Global Capability Centre model.",
+   action:"Designed SOPs, onboarding playbooks and delivery frameworks; ran QBR governance, escalation management and stakeholder engagement across AdOps, addressable media, analytics and reconciliation.",
+   result:"Operational scalability, SLA adherence and cross-market consistency across a 24-hour, four-hub delivery model spanning five regions.",
+   metrics:["70+ markets","5 regions","24-hr coverage","QBR governance"]}
+];
+const SKILLS=[
+  {ic:"🎯",h:"Paid Acquisition",chips:["Paid Search","Paid Social","Programmatic (DV360 / TTD)","App Acquisition","Demand Gen","Full-Funnel"]},
+  {ic:"📊",h:"Measurement",chips:["ROAS / CAC / LTV","Incrementality (geo · holdout · lift)","Brand &amp; Search Lift","Attribution","GA4","Signal-loss frameworks"]},
+  {ic:"👥",h:"Audience & Data",chips:["1P CDP","Lookalikes","3P In-market","Deterministic signals","Comscore","GWI"]},
+  {ic:"🛠️",h:"Platforms & Tools",chips:["Google Ads","Meta","SA360","TikTok","Apple Search Ads","Looker","Tableau","Amplitude","HubSpot"]},
+  {ic:"🎬",h:"Creative & Testing",chips:["Creative testing frameworks","Short-form / UGC","Localized messaging","A/B &amp; multivariate","Landing-page CRO"]},
+  {ic:"🧭",h:"Leadership",chips:["Team leadership (12)","Stakeholder / QBRs","Agency management","Governance &amp; SOPs","Budget ownership"]}
+];
+const EXP=[
+  {role:"Director — Client Engagement",co:"IPG Mediabrands",dt:"Dec 2025 – Mar 2026",
+   p:"Global client onboarding &amp; governance in a GCC model across NA, UK, LATAM, APAC &amp; EMEA — primary liaison for 70+ markets, QBRs and escalations."},
+  {role:"Director — Digital",co:"Mindshare",dt:"Sep 2023 – Nov 2025",
+   p:"Led full-funnel digital for India's largest automotive brand — $1M+/mo budgets across YouTube, Meta &amp; programmatic; BLS/SLS, 1P data, team of 10–12; award-winning campaigns."},
+  {role:"Group Head / Sr. Account Manager",co:"LS Digital",dt:"Sep 2021 – Sep 2023",
+   p:"Full-funnel plans across BFSI &amp; FMCG — multi-platform strategy, MBR/QBR reviews, creative validation, daily pacing &amp; optimisation."},
+  {role:"Business Manager",co:"Publicis Media",dt:"Nov 2020 – Jan 2021",
+   p:"£500K/mo budget for a UK-market mobile brand across Google, Bing, Meta, Snap &amp; LinkedIn; led a team of 12; data-driven forecasting."},
+  {role:"Performance Marketing Manager",co:"StayAbode Ventures",dt:"Sep 2019 – Oct 2020",
+   p:"End-to-end Google Ads, landing-page CRO &amp; GTM tracking; multi-channel lead-gen across real-estate marketplaces."},
+  {role:"Sr. Google Ads Consultant (Google on-site)",co:"Regalix",dt:"Jul 2017 – Sep 2019",
+   p:"Managed 650–700 advertiser accounts across the UK &amp; Ireland — Search &amp; Display optimisation at scale."}
+];
+
+/* ---------------- RENDER ---------------- */
+const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+const cg=document.getElementById('caseGrid');
+CASES.forEach((c,i)=>{
+  const el=document.createElement('article');
+  el.className='case tilt reveal'+(i%2?' d1':'');
+  el.setAttribute('role','button'); el.setAttribute('tabindex','0'); el.setAttribute('aria-expanded','false');
+  el.setAttribute('aria-label',c.title+' — expand case study');
+  el.innerHTML=`<div class="tagrow"><span class="sector">${c.sector}</span><span class="chev" aria-hidden="true">▼</span></div>
+    <div class="headline">${c.headline}</div><div class="h-cap">${c.hcap}</div>
+    <h3>${c.title}</h3><p class="one">${c.one}</p>
+    <div class="detail"><div class="car">
+      <div class="blk"><div class="k">Challenge</div><div class="v">${c.challenge}</div></div>
+      <div class="blk"><div class="k">Action</div><div class="v">${c.action}</div></div>
+      <div class="blk"><div class="k">Result</div><div class="v">${c.result}</div></div>
+      <div class="mini-metrics">${c.metrics.map(m=>`<span>${m}</span>`).join('')}</div>
+    </div></div>
+    <div class="hint">＋ Tap to see Challenge · Action · Result</div>`;
+  const toggle=()=>{const open=el.getAttribute('aria-expanded')==='true';el.setAttribute('aria-expanded',String(!open));};
+  el.addEventListener('click',toggle);
+  el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}});
+  cg.appendChild(el);
+});
+const sg=document.getElementById('skillsGrid');
+SKILLS.forEach((s,i)=>{const el=document.createElement('div');el.className='skillcard reveal'+(i%3?(' d'+(i%3)):'');
+  el.innerHTML=`<div class="ic" aria-hidden="true">${s.ic}</div><h3>${s.h}</h3>
+   <div class="chips">${s.chips.map(c=>`<span class="chip">${c}</span>`).join('')}</div>`;sg.appendChild(el);});
+const tl=document.getElementById('timeline');
+EXP.forEach((e,i)=>{const el=document.createElement('div');el.className='tnode reveal'+(i%2?' d1':'');
+  el.innerHTML=`<div class="tt"><h3>${e.role}</h3><span class="co">${e.co}</span><span class="dt">${e.dt}</span></div><p>${e.p}</p>`;
+  tl.appendChild(el);});
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+/* ---------------- MOTION: reveal + counters + bars ---------------- */
+function animateCount(el){
+  const t=parseFloat(el.dataset.target),dec=el.dataset.dec?+el.dataset.dec:0,pre=el.dataset.pre||'',suf=el.dataset.suf||'';
+  if(reduce){el.textContent=pre+t.toFixed(dec)+suf;return;}
+  const dur=900,st=performance.now();
+  (function step(now){let p=Math.min((now-st)/dur,1);const e=1-Math.pow(1-p,3);
+    el.textContent=pre+(t*e).toFixed(dec)+suf;if(p<1)requestAnimationFrame(step);})(st);
+}
+const io=new IntersectionObserver((ents)=>{
+  ents.forEach(en=>{if(!en.isIntersecting)return;
+    en.target.classList.add('in');
+    en.target.querySelectorAll&&en.target.querySelectorAll('.count').forEach(c=>{if(!c.dataset.done){c.dataset.done='1';animateCount(c);}});
+    if(en.target.classList.contains('count')&&!en.target.dataset.done){en.target.dataset.done='1';animateCount(en.target);}
+    en.target.querySelectorAll&&en.target.querySelectorAll('.fill').forEach(f=>{f.style.width=f.dataset.fill+'%';});
+    io.unobserve(en.target);
+  });
+},{threshold:.18,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal,.count').forEach(el=>io.observe(el));
+
+/* ---------------- DEPTH: mouse tilt ---------------- */
+if(!reduce && window.matchMedia('(pointer:fine)').matches){
+  document.querySelectorAll('.tilt').forEach(card=>{
+    card.addEventListener('pointermove',e=>{
+      const r=card.getBoundingClientRect();
+      const px=(e.clientX-r.left)/r.width-.5, py=(e.clientY-r.top)/r.height-.5;
+      card.style.transform=`perspective(900px) rotateX(${(-py*5).toFixed(2)}deg) rotateY(${(px*5).toFixed(2)}deg) translateY(-4px)`;
+    });
+    card.addEventListener('pointerleave',()=>{card.style.transform='';});
+  });
+  /* parallax orbs */
+  let ticking=false;
+  window.addEventListener('scroll',()=>{
+    if(ticking)return;ticking=true;
+    requestAnimationFrame(()=>{const y=window.scrollY;
+      document.querySelectorAll('[data-par]').forEach(o=>{o.style.transform=`translateY(${(y*parseFloat(o.dataset.par)).toFixed(1)}px)`;});
+      ticking=false;});
+  },{passive:true});
+}
+
+/* ---------------- INTERACTIVITY: scrollspy + nav + theme ---------------- */
+const navLinks=[...document.querySelectorAll('.nav-links a[href^="#"]')];
+const spy=new IntersectionObserver((ents)=>{
+  ents.forEach(en=>{if(en.isIntersecting){const id=en.target.id;
+    navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+id));}});
+},{threshold:.3,rootMargin:'-20% 0px -55% 0px'});
+['metrics','work','dashboards','skills','experience','contact'].forEach(id=>{const s=document.getElementById(id);if(s)spy.observe(s);});
+
+const menuBtn=document.getElementById('menuBtn'),links=document.getElementById('navlinks');
+menuBtn.addEventListener('click',()=>{const open=links.classList.toggle('open');
+  menuBtn.setAttribute('aria-expanded',String(open));menuBtn.textContent=open?'✕':'☰';});
+links.addEventListener('click',e=>{if(e.target.tagName==='A'&&links.classList.contains('open')){
+  links.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');menuBtn.textContent='☰';}});
+
+const themeBtn=document.getElementById('themeBtn'),root=document.documentElement;
+let saved=null;try{saved=localStorage.getItem('ad-theme');}catch(_){}
+if(saved){root.setAttribute('data-theme',saved);}
+function syncTheme(){const light=root.getAttribute('data-theme')==='light';
+  themeBtn.textContent=light?'☀️':'🌙';themeBtn.setAttribute('aria-pressed',String(light));
+  themeBtn.setAttribute('aria-label',light?'Switch to dark mode':'Switch to light mode');}
+syncTheme();
+themeBtn.addEventListener('click',()=>{const light=root.getAttribute('data-theme')==='light';
+  const next=light?'dark':'light';root.setAttribute('data-theme',next);
+  try{localStorage.setItem('ad-theme',next);}catch(_){}syncTheme();
+  if(window.__renderDash)window.__renderDash();/* re-theme charts */});
+</script>
+
+<!-- ============ DASHBOARD SUITE ============ -->
+<script>
+(function(){
+const SER=['#A3E635','#38BDF8','#FBBF24','#A78BFA','#FB7185','#34D399','#94A3B8','#F472B6'];
+const ACC=SER[0];
+function tc(){const cs=getComputedStyle(document.documentElement);
+  return {text:(cs.getPropertyValue('--muted')||'#888').trim(),grid:(cs.getPropertyValue('--border')||'rgba(128,128,128,.2)').trim()};}
+function num(x){if(x==null)return null;const m=String(x).replace(/[^0-9.\-]/g,'');return m===''?null:parseFloat(m);}
+function heat(v,min,max,good){if(v==null||isNaN(v))return'transparent';let r=(v-min)/(max-min);r=Math.max(0,Math.min(1,r));
+  if(good==='low')r=1-r;return r>.5?`rgba(163,230,53,${(r*.30).toFixed(2)})`:`rgba(251,113,133,${((1-r)*.26).toFixed(2)})`;}
+
+/* ---------- DATA ---------- */
+const BRANDING={cols:['Platform','Cohort / Audience','Reach','Buy Type','Base Rate','Prev CTR','Prev VTR'],
+  keys:['platform','cohort','reach','buy','rate','ctr','vtr'],
+  rows:[
+   {platform:'YouTube — Skippable',cohort:'In-market SUV/EV (New)',reach:'40.8M',buy:'CPV',rate:'₹0.18',ctr:'0.21%',vtr:'52%'},
+   {platform:'YouTube — Non-skip / CTV',cohort:'Top 10% income, 20 cities',reach:'28.0M',buy:'CPM',rate:'₹145',ctr:'—',vtr:'75%'},
+   {platform:'YouTube — 100% SOV Pack',cohort:'4-wheeler intenders',reach:'12.0M',buy:'Fixed SOV',rate:'₹181L',ctr:'—',vtr:'48%'},
+   {platform:'Meta — Reach & Freq',cohort:'EV + flyers + HV shoppers',reach:'18.9M',buy:'CPM',rate:'₹90',ctr:'0.31%',vtr:'—'},
+   {platform:'Meta — Moment Maker',cohort:'Premium EV-interest',reach:'167.5M',buy:'CPM',rate:'₹58',ctr:'0.46%',vtr:'27.7%'},
+   {platform:'DV360 Display',cohort:'In-market + deterministic',reach:'34.0M',buy:'CPM',rate:'₹150',ctr:'0.75%',vtr:'—'},
+   {platform:'DV360 Remarketing',cohort:'Site visitors / engagers',reach:'9.0M',buy:'CPM',rate:'₹120',ctr:'0.55%',vtr:'—'},
+   {platform:'Auto Portals (SOV)',cohort:'Competition-page intenders',reach:'2.5M',buy:'Fixed',rate:'eCPC ₹65',ctr:'0.20%',vtr:'—'},
+   {platform:'Premium Pubs',cohort:'Luxury travellers, elite transactors',reach:'15.0M',buy:'CPM',rate:'₹210',ctr:'0.28%',vtr:'—'},
+   {platform:'Vernacular Video',cohort:'Deterministic + appographic',reach:'21.0M',buy:'CPM',rate:'₹90',ctr:'0.20%',vtr:'85.4%'}],
+  reachN:[40.8,28,12,18.9,167.5,34,9,2.5,15,21],vtrN:[52,75,48,null,27.7,null,null,null,null,85.4],ctrN:[0.21,null,null,0.46,null,0.75,0.55,0.20,0.28,0.20]};
+/* CM360 / DCM report — real delivered cohort metrics (BFSI life-insurance, anonymised) */
+const CM360={cols:['Cohort (CM360 audience)','Impr.','Clicks','CTR','eCPM ₹','CPC ₹','Pageviews','Assist Rate','Assisted Conv','CPA ₹','Verdict'],
+  keys:['coh','impr','clk','ctr','ecpm','cpc','pv','assist','conv','cpa','verdict'],
+  rows:[
+    {coh:'Custom Intent — CI Keywords',impr:'211,255',clk:'1,893',ctr:'0.90%',ecpm:'86',cpc:'9.6',pv:'323',assist:'22%',conv:'166',cpa:'110',verdict:'✅ Scale'},
+    {coh:'In-market — Business Creation',impr:'3,181,452',clk:'32,623',ctr:'1.03%',ecpm:'90',cpc:'8.8',pv:'3,253',assist:'14%',conv:'1,522',cpa:'189',verdict:'✅ Scale'},
+    {coh:'In-market — Financial Planning',impr:'2,035,995',clk:'17,959',ctr:'0.88%',ecpm:'94',cpc:'10.6',pv:'3,632',assist:'35%',conv:'1,069',cpa:'179',verdict:'✅ Scale'},
+    {coh:'Affinity — Family Focused',impr:'1,600,869',clk:'9,368',ctr:'0.59%',ecpm:'99',cpc:'16.9',pv:'1,478',assist:'27%',conv:'701',cpa:'149',verdict:'◐ Maintain'},
+    {coh:'In-market — Start Business',impr:'810,233',clk:'5,191',ctr:'0.64%',ecpm:'105',cpc:'16.3',pv:'815',assist:'24%',conv:'442',cpa:'192',verdict:'◐ Maintain'},
+    {coh:'In-market — Life Insurance',impr:'810,628',clk:'3,181',ctr:'0.39%',ecpm:'108',cpc:'27.4',pv:'671',assist:'35%',conv:'377',cpa:'231',verdict:'▼ Trim'}],
+  heat:{ctr:{min:.39,max:1.03,good:'high'},cpc:{min:8.8,max:27.4,good:'low'},cpa:{min:110,max:231,good:'low'},conv:{min:166,max:1522,good:'high'}},
+  labels:['CI Keywords','Business Creation','Financial Planning','Family Focused','Start Business','Life Insurance'],
+  ctr:[0.90,1.03,0.88,0.59,0.64,0.39],cpc:[9.6,8.8,10.6,16.9,16.3,27.4],cpa:[110,189,179,149,192,231]};
+/* Third-party measurement & verification — Comscore · Nielsen DAR · IAS (representative panel/verification benchmarks) */
+const MEAS={cols:['Platform','Comscore Reach','Comscore MAU','Affinity Index','Nielsen On-Target','Nielsen GRPs','IAS Viewability','IAS IVT','IAS Brand-Safe','Verdict'],
+  keys:['platform','csreach','csmau','affinity','ontarget','grps','view','ivt','safe','verdict'],
+  rows:[
+    {platform:'YouTube',csreach:'165M',csmau:'467M',affinity:'142',ontarget:'78%',grps:'320',view:'92%',ivt:'1.2%',safe:'98%',verdict:'✅ Core buy'},
+    {platform:'Connected TV',csreach:'28M',csmau:'45M',affinity:'150',ontarget:'80%',grps:'75',view:'97%',ivt:'0.6%',safe:'99%',verdict:'✅ Premium'},
+    {platform:'Meta',csreach:'167M',csmau:'380M',affinity:'118',ontarget:'71%',grps:'280',view:'88%',ivt:'1.8%',safe:'96%',verdict:'✅ Core buy'},
+    {platform:'Auto Portals',csreach:'2.5M',csmau:'12M',affinity:'190',ontarget:'82%',grps:'35',view:'85%',ivt:'1.5%',safe:'99%',verdict:'✅ Niche / high-affinity'},
+    {platform:'Premium Pubs',csreach:'15M',csmau:'60M',affinity:'134',ontarget:'68%',grps:'70',view:'79%',ivt:'2.1%',safe:'97%',verdict:'◐ Monitor'},
+    {platform:'DV360 Display',csreach:'34M',csmau:'250M',affinity:'126',ontarget:'64%',grps:'110',view:'71%',ivt:'3.4%',safe:'94%',verdict:'◐ Optimise viewability'},
+    {platform:'Vernacular Video',csreach:'21M',csmau:'90M',affinity:'108',ontarget:'58%',grps:'90',view:'66%',ivt:'5.2%',safe:'89%',verdict:'▲ Verify before scale'}],
+  heat:{affinity:{min:108,max:190,good:'high'},ontarget:{min:58,max:82,good:'high'},view:{min:66,max:97,good:'high'},ivt:{min:0.6,max:5.2,good:'low'},safe:{min:89,max:99,good:'high'}},
+  labels:['YouTube','CTV','Meta','Auto Portals','Premium Pubs','DV360','Vernacular'],
+  affinity:[142,150,118,190,134,126,108],view:[92,97,88,85,79,71,66],ivt:[1.2,0.6,1.8,1.5,2.1,3.4,5.2]};
+const PERF={cols:['Platform','Cohort','Targeting','Buy','Base Rate','CTR','CAC','ROAS','LTV'],
+  keys:['platform','cohort','targeting','buy','rate','ctr','cac','roas','ltv'],
+  rows:[
+   {platform:'Google Search',cohort:'High-intent',targeting:'Keyword + aud.',buy:'CPC',rate:'₹38',ctr:'4.10%',cac:'$22',roas:'4.8x',ltv:'$310'},
+   {platform:'Google Demand Gen',cohort:'In-market + KW',targeting:'In-market + LAL',buy:'CPC',rate:'₹3',ctr:'1.30%',cac:'$31',roas:'3.2x',ltv:'$268'},
+   {platform:'Meta — Conversions',cohort:'CDP + lookalike',targeting:'CDP 1P + LAL',buy:'CPC',rate:'₹5',ctr:'0.77%',cac:'$27',roas:'3.6x',ltv:'$295'},
+   {platform:'Meta — Interest (ctrl)',cohort:'Interest-based',targeting:'Interest stack',buy:'CPC',rate:'₹5',ctr:'0.46%',cac:'$41',roas:'2.1x',ltv:'$240'},
+   {platform:'Meta — Retargeting',cohort:'Cart abandoners',targeting:'1P pixel + CRM',buy:'oCPM',rate:'₹62',ctr:'1.20%',cac:'$14',roas:'6.4x',ltv:'$330'},
+   {platform:'The Trade Desk',cohort:'Deterministic 3P',targeting:'Deterministic',buy:'CPM',rate:'₹150',ctr:'0.31%',cac:'$48',roas:'2.4x',ltv:'$255'},
+   {platform:'TikTok Ads',cohort:'Broad + UGC',targeting:'Broad + interest',buy:'CPC',rate:'₹7',ctr:'1.05%',cac:'$36',roas:'2.8x',ltv:'$210'},
+   {platform:'Apple Search Ads',cohort:'App intenders',targeting:'Keyword',buy:'CPT',rate:'$1.9',ctr:'—',cac:'$19',roas:'3.9x',ltv:'$280'},
+   {platform:'DV360 Retargeting',cohort:'Click-to-visit pool',targeting:'1P remarketing',buy:'CPM',rate:'₹120',ctr:'0.55%',cac:'$25',roas:'4.1x',ltv:'$300'},
+   {platform:'Auto Portals (Lead)',cohort:'Intenders',targeting:'Contextual',buy:'eCPC',rate:'₹65',ctr:'0.20%',cac:'$52',roas:'1.9x',ltv:'$245'}],
+  roasN:[4.8,3.2,3.6,2.1,6.4,2.4,2.8,3.9,4.1,1.9],cacN:[22,31,27,41,14,48,36,19,25,52],ltvN:[310,268,295,240,330,255,210,280,300,245]};
+const AUD={first:[
+   {n:'CDP Audiences',src:'Client CDP → match',perf:'0.77% CTR vs 0.46% interest (+67%)'},
+   {n:'CDP Lookalikes',src:'Seed → LAL 1–5%',perf:'+18% incremental growth'},
+   {n:'Website Retargeting',src:'Pixel + DV360',perf:'Strongest click-to-visit'},
+   {n:'Cart / Form Abandoners',src:'Pixel + CRM',perf:'CAC $14 · ROAS 6.4×'},
+   {n:'Prior-Campaign Engagers',src:'Platform 1P',perf:'High-relevance reuse'},
+   {n:'Customer Match / CRM',src:'Hashed email/phone',perf:'Suppression + winback'}],
+  third:[
+   {n:'In-Market (Auto)',src:'Google / DV360',perf:'Display 0.75% CTR'},
+   {n:'Custom Intent (Comp. KW)',src:'Search + YouTube',perf:'Conquest demand capture'},
+   {n:'Affinity / Interest',src:'Meta / Google',perf:'0.46% CTR (control)'},
+   {n:'GWI Attitudinal',src:'GWI panel',perf:'Tech-confident indexing'},
+   {n:'Deterministic Geo',src:'Geo / fuel / insurance',perf:'0.31% CTR · 75% VTR'},
+   {n:'Comscore / Nielsen',src:'Panel reach',perf:'Highest-reach selection'}],
+  ctrLabels:['Meta CDP (1P)','DV In-mkt (3P)','DV Remkt (1P)','Deterministic (3P)','Meta Interest (3P)','Auto-portal (3P)'],
+  ctrVals:[0.77,0.75,0.55,0.31,0.46,0.20],ctrType:['1P','3P','1P','3P','3P','3P']};
+const CREATIVE={cols:['Format','YouTube','Meta','Programmatic','Vernacular','Best result'],
+  rows:[
+   {f:'Short-form Video',yt:'✓',meta:'✓',dv:'✓',ver:'✓',r:'VTR 85.4% (vernacular)'},
+   {f:'Skippable Instream',yt:'✓',meta:'—',dv:'—',ver:'✓',r:'VTR 52% (in-market)'},
+   {f:'Non-skip / CTV',yt:'✓',meta:'—',dv:'—',ver:'—',r:'BLS recall +7.3%'},
+   {f:'Teaser cut',yt:'✓',meta:'✓',dv:'—',ver:'—',r:'VTR 27.7% (252% of plan)'},
+   {f:'Static / Banner',yt:'—',meta:'✓',dv:'✓',ver:'✓',r:'CTR 0.75% in-market'},
+   {f:'UGC-style',yt:'—',meta:'✓',dv:'—',ver:'✓',r:'CAC efficiency'},
+   {f:'Rich Media',yt:'—',meta:'—',dv:'✓',ver:'—',r:'CTR 1.0%'}],
+  fmtLabels:['Vernacular short-form','YT Skippable','Teaser cut','YT Non-skip/CTV'],fmtVtr:[85.4,52,27.7,48]};
+const WM={flow:[{t:'Media Delivered',b:'1,209M',s:'impr · 105M views · 4.9M clicks'},
+   {t:'Search Lift',b:'+695%',s:'launch-day branded search'},
+   {t:'Website Traffic',b:'+1,065%',s:'pageviews on unveil'},
+   {t:'On-site Visits',b:'2.0M',s:'sessions → funnel'}],
+  phases:['Pre-buzz','Unveil','Sustenance'],users:[9864,92521,10907],sessions:[9939,95269,10044],pv:[10996,117099,9340],clicksK:[33,2900,1900],
+  link:[['Impressions / Views','Branded search volume','+695% launch-day surge'],
+   ['Video completion (VTR)','Ad recall / favorability','BLS favorability +2.8%, recall +7.3%'],
+   ['Clicks / CTR','Daily users & sessions','Users +938%, sessions +959%'],
+   ['DV remarketing clicks','Click-to-visit ratio','Strongest visit conversion'],
+   ['Total qualified traffic','RYI / funnel entries','2.0M visits routed']]};
+/* HubSpot website→media full-funnel — wired to live source/lifecycle taxonomy; figures illustrative pending populated portal */
+const HSFUNNEL={cols:['Channel (HubSpot source)','Sessions','Contacts','CVR','MQL','SQL','Customers','CAC','Flag'],
+  keys:['ch','sess','contacts','cvr','mql','sql','cust','cac','flag'],
+  rows:[
+    {ch:'Paid Search',sess:'28,500',contacts:'1,140',cvr:'4.0%',mql:'410',sql:'168',cust:'58',cac:'$185',flag:'✅ Healthy'},
+    {ch:'Email Marketing',sess:'9,800',contacts:'686',cvr:'7.0%',mql:'295',sql:'142',cust:'52',cac:'$90',flag:'✅ Scale'},
+    {ch:'Organic Search',sess:'42,000',contacts:'1,260',cvr:'3.0%',mql:'378',sql:'132',cust:'41',cac:'—',flag:'✅ Healthy'},
+    {ch:'Referrals',sess:'6,400',contacts:'320',cvr:'5.0%',mql:'134',sql:'61',cust:'27',cac:'$70',flag:'✅ Scale'},
+    {ch:'Direct Traffic',sess:'15,200',contacts:'456',cvr:'3.0%',mql:'130',sql:'47',cust:'18',cac:'—',flag:'◐ Monitor'},
+    {ch:'Paid Social',sess:'36,000',contacts:'720',cvr:'2.0%',mql:'173',sql:'40',cust:'9',cac:'$410',flag:'▲ Concern'},
+    {ch:'Organic Social',sess:'11,000',contacts:'165',cvr:'1.5%',mql:'33',sql:'8',cust:'2',cac:'—',flag:'▲ Concern'}],
+  heat:{cvr:{min:1.5,max:7,good:'high'},cac:{min:70,max:410,good:'low'},sql:{min:8,max:168,good:'high'}},
+  stageLabels:['Sessions → Contact','Contact → MQL','MQL → SQL','SQL → Customer'],stagePct:[3.2,32.7,41.1,32.4],
+  custLabels:['Paid Search','Email','Organic Search','Referrals','Direct','Paid Social','Organic Social'],custVals:[58,52,41,27,18,9,2],
+  flags:[
+    ['▲','Paid Social','24% of all sessions but just 4% of customers — CVR 2.0% and CAC $410 (4.5× email). Audit creative-to-landing-page match and tighten audiences before adding budget.'],
+    ['▲','Organic Social','1.5% session→contact CVR and near-zero SQL. Shift to lead-gen formats or deprioritise.'],
+    ['▲','MQL→SQL handoff','Blended 41%, but Paid Social converts only 23% MQL→SQL — a lead-quality / sales-follow-up gap, not a volume gap.'],
+    ['◐','Site conversion','Blended session→contact CVR 3.2% sits below a ~4% healthy benchmark — a site-CRO opportunity worth more than extra media spend.'],
+    ['✅','Email & Referrals','Best unit economics (CAC $90 / $70, strongest SQL%). Reallocate budget here from Paid Social.']]};
+
+/* ---------- table builder (read-only, sortable) ---------- */
+function buildTable(data,heatCols,filterKey){
+  const st={sk:null,sd:1,flt:'all'};
+  const wrap=document.createElement('div');
+  let filterHtml='';
+  if(filterKey){const opts=['all',...new Set(data.rows.map(r=>r[filterKey]))];
+    filterHtml=`<div class="d-toolbar"><label>Filter buy type:</label><select id="dflt">${opts.map(o=>`<option>${o}</option>`).join('')}</select><span>· click headers to sort</span></div>`;}
+  else filterHtml=`<div class="d-toolbar"><span>↕ Click any column header to sort</span></div>`;
+  wrap.innerHTML=filterHtml+'<div class="d-tablewrap"><table></table></div>';
+  const tbl=wrap.querySelector('table');
+  function draw(){
+    let rows=data.rows.slice();
+    if(filterKey&&st.flt!=='all')rows=rows.filter(r=>r[filterKey]===st.flt);
+    if(st.sk)rows.sort((a,b)=>{const na=num(a[st.sk]),nb=num(b[st.sk]);
+      let c=(na!=null&&nb!=null)?na-nb:String(a[st.sk]).localeCompare(String(b[st.sk]));return c*st.sd;});
+    tbl.innerHTML=`<thead><tr>${data.cols.map((c,i)=>{const k=data.keys[i];
+      const ar=st.sk===k?(st.sd>0?'▲':'▼'):'↕';return `<th data-k="${k}">${c}<span class="ar">${ar}</span></th>`;}).join('')}</tr></thead>
+      <tbody>${rows.map(r=>`<tr>${data.keys.map(k=>{
+        const isNum=['reach','rate','ctr','vtr','cac','roas','ltv','impr','clk','ecpm','cpc','pv','assist','conv','cpa','sess','contacts','cvr','mql','sql','cust','csreach','csmau','affinity','ontarget','grps','view','ivt','safe'].includes(k);let stl='';
+        if(heatCols&&heatCols[k]){const bg=heat(num(r[k]),heatCols[k].min,heatCols[k].max,heatCols[k].good);if(bg!=='transparent')stl=`background:${bg}`;}
+        const v=(k==='buy')?`<span class="d-pill">${r[k]}</span>`:(r[k]==null?'':r[k]);
+        return `<td class="${isNum?'num':''}" style="${stl}">${v}</td>`;}).join('')}</tr>`).join('')}</tbody>`;
+    tbl.querySelectorAll('th').forEach(th=>th.onclick=()=>{const k=th.dataset.k;
+      if(st.sk===k)st.sd*=-1;else{st.sk=k;st.sd=1;}draw();});
+  }
+  draw();
+  if(filterKey)wrap.querySelector('#dflt').onchange=e=>{st.flt=e.target.value;draw();};
+  return wrap;
+}
+
+/* ---------- charts ---------- */
+let CHARTS=[];
+function destroyCharts(){CHARTS.forEach(c=>{try{c.destroy();}catch(_){}}); CHARTS=[];}
+function mk(canvas,cfg){if(!window.Chart)return;const t=tc();
+  Chart.defaults.font.family="'DM Sans','Inter',sans-serif";Chart.defaults.color=t.text;
+  cfg.options=cfg.options||{};cfg.options.maintainAspectRatio=false;cfg.options.responsive=true;
+  CHARTS.push(new Chart(canvas,cfg));}
+function gridOpt(){const t=tc();return {grid:{color:t.grid},ticks:{color:t.text}};}
+
+/* ---------- panel renderers ---------- */
+const P=document.getElementById('dashPanel');
+function head(eye,h,lead){return `<div class="d-eyebrow">${eye}</div><h3>${h}</h3><p class="d-lead">${lead}</p>`;}
+
+function rBranding(){
+  P.innerHTML=head('Dashboard 01 · Branding','Platform evaluation — reach, buy type, base rate, prior CTR / VTR',
+    'Pre-buy grid for awareness/consideration plans. Shading flags strongest reach & VTR.');
+  P.appendChild(buildTable(BRANDING,{vtr:{min:20,max:86,good:'high'},ctr:{min:.2,max:.75,good:'high'}},null));
+  const ch=document.createElement('div');ch.className='d-charts';
+  ch.innerHTML='<div class="d-chartcard"><div class="d-eyebrow">Planned reach by platform</div><div class="d-chartbox"><canvas id="c1"></canvas></div></div><div class="d-chartcard"><div class="d-eyebrow">Prior VTR by line item</div><div class="d-chartbox"><canvas id="c2"></canvas></div></div>';
+  P.appendChild(ch);
+  P.insertAdjacentHTML('beforeend','<div class="d-note"><b>Read:</b> vernacular short-form drove the highest VTR (85.4%) and DV display the best in-market CTR (0.75%); SOV packs trade efficiency for guaranteed premium reach.</div>');
+  const lab=BRANDING.rows.map(r=>r.platform.split(' — ')[0].split(' (')[0]);
+  mk(document.getElementById('c1'),{type:'bar',data:{labels:lab,datasets:[{label:'Reach (M)',data:BRANDING.reachN,backgroundColor:ACC,borderRadius:5}]},options:{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:gridOpt(),y:gridOpt()}}});
+  mk(document.getElementById('c2'),{type:'bar',data:{labels:lab,datasets:[{label:'VTR %',data:BRANDING.vtrN,backgroundColor:SER[1],borderRadius:4}]},options:{plugins:{legend:{display:false}},scales:{x:{...gridOpt(),ticks:{color:tc().text,font:{size:8}}},y:gridOpt()}}});
+  // ---- CM360 / DCM cohort pick-&-choose ----
+  P.insertAdjacentHTML('beforeend',
+    '<div style="margin-top:28px;border-top:1px dashed var(--border);padding-top:22px"></div>'+
+    '<div class="d-eyebrow">CM360 / DCM report · pick &amp; choose by cohort</div>'+
+    '<h3 style="font-size:18px;margin-bottom:6px">Platform &amp; cohort selection on real CM360 metrics</h3>'+
+    '<p class="d-lead">Live DoubleClick / CM360 delivery for a BFSI life-insurance campaign (YouTube via DV360) — every audience cohort scored on CTR, eCPM, CPC, assist rate, assisted conversions and CPA. Shading flags efficiency; the verdict column drives the scale / maintain / trim call.</p>'+
+    '<div class="d-kpis">'+
+     '<div class="d-kpi"><div class="n">₹8.27L</div><div class="t">Media cost (CM360)</div></div>'+
+     '<div class="d-kpi"><div class="n">8.65M</div><div class="t">Impressions</div></div>'+
+     '<div class="d-kpi"><div class="n">0.81%</div><div class="t">Blended CTR</div></div>'+
+     '<div class="d-kpi"><div class="n">4,277</div><div class="t">Assisted conversions</div></div>'+
+    '</div>');
+  P.appendChild(buildTable(CM360,CM360.heat,null));
+  const ch2=document.createElement('div');ch2.className='d-charts';
+  ch2.innerHTML='<div class="d-chartcard"><div class="d-eyebrow">CTR by cohort (CM360)</div><div class="d-chartbox"><canvas id="c3"></canvas></div></div><div class="d-chartcard"><div class="d-eyebrow">CPC vs CPA — efficiency (₹)</div><div class="d-chartbox"><canvas id="c4"></canvas></div></div>';
+  P.appendChild(ch2);
+  P.insertAdjacentHTML('beforeend','<div class="d-note"><b>Pick logic:</b> <b>Business Creation</b> &amp; <b>Financial Planning</b> scale — best CTR (1.03% / 0.88%), lowest CPC and the highest assisted-conversion volume. <b>Custom Intent</b> owns the lowest CPA (₹110). <b>Life-Insurance in-market</b> is the laggard — CTR 0.39%, CPC ₹27, CPA ₹231 → trim &amp; reallocate. The DCM reach-overlap matrix further confirms Financial Planning &amp; Business Creation as the least-duplicated, highest-unique-reach cohorts.</div>');
+  mk(document.getElementById('c3'),{type:'bar',data:{labels:CM360.labels,datasets:[{label:'CTR %',data:CM360.ctr,backgroundColor:CM360.ctr.map(v=>v>=0.85?SER[5]:v>=0.6?SER[2]:SER[4]),borderRadius:5}]},options:{plugins:{legend:{display:false}},scales:{x:{...gridOpt(),ticks:{color:tc().text,font:{size:9}}},y:gridOpt()}}});
+  mk(document.getElementById('c4'),{type:'bar',data:{labels:CM360.labels,datasets:[{label:'CPC ₹',data:CM360.cpc,backgroundColor:SER[1],borderRadius:4},{label:'CPA ₹',data:CM360.cpa,backgroundColor:SER[3],borderRadius:4}]},options:{plugins:{legend:{position:'bottom'}},scales:{x:{...gridOpt(),ticks:{color:tc().text,font:{size:9}}},y:gridOpt()}}});
+  // ---- Third-party measurement & verification (Comscore · Nielsen · IAS) ----
+  P.insertAdjacentHTML('beforeend',
+    '<div style="margin-top:28px;border-top:1px dashed var(--border);padding-top:22px"></div>'+
+    '<div class="d-eyebrow">Measurement &amp; verification · Comscore · Nielsen DAR · IAS</div>'+
+    '<h3 style="font-size:18px;margin-bottom:6px">Validate the buy on independent panel &amp; verification data</h3>'+
+    '<p class="d-lead">Beyond platform-reported delivery: Comscore (reach, MAU, affinity index), Nielsen Digital Ad Ratings (on-target reach, GRPs) and IAS (viewability, invalid-traffic, brand-safety). Shading flags quality; the verdict drives the keep / optimise / verify call. <i>Representative panel &amp; verification benchmarks.</i></p>'+
+    '<div class="d-kpis">'+
+     '<div class="d-kpi"><div class="n">82%</div><div class="t">Avg IAS viewability</div></div>'+
+     '<div class="d-kpi"><div class="n">2.3%</div><div class="t">Avg IAS IVT (fraud)</div></div>'+
+     '<div class="d-kpi"><div class="n">72%</div><div class="t">Avg Nielsen on-target</div></div>'+
+     '<div class="d-kpi"><div class="n">190</div><div class="t">Peak affinity index</div></div>'+
+    '</div>');
+  P.appendChild(buildTable(MEAS,MEAS.heat,null));
+  const ch3=document.createElement('div');ch3.className='d-charts';
+  ch3.innerHTML='<div class="d-chartcard"><div class="d-eyebrow">Comscore affinity index by platform</div><div class="d-chartbox"><canvas id="c7"></canvas></div></div><div class="d-chartcard"><div class="d-eyebrow">IAS viewability vs IVT (%)</div><div class="d-chartbox"><canvas id="c8"></canvas></div></div>';
+  P.appendChild(ch3);
+  P.insertAdjacentHTML('beforeend','<div class="d-note"><b>Selection logic:</b> CTV &amp; YouTube clear on every gate — high viewability (97% / 92%), lowest IVT and strong on-target reach → anchor the buy. <b>Auto Portals</b> over-index on affinity (190) for a niche, high-intent reach. <b>DV360 display</b> needs viewability optimisation (71%); <b>Vernacular video</b> is the watch-out — IVT 5.2%, viewability 66%, brand-safe only 89% → run IAS pre-bid segments and a Nielsen/Comscore validation flight before scaling. Triangulating Comscore panel reach against CM360 delivery also corrects platform-reported reach inflation.</div>');
+  mk(document.getElementById('c7'),{type:'bar',data:{labels:MEAS.labels,datasets:[{label:'Affinity index',data:MEAS.affinity,backgroundColor:MEAS.affinity.map(v=>v>=140?SER[5]:v>=120?SER[2]:SER[4]),borderRadius:5}]},options:{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:gridOpt(),y:gridOpt()}}});
+  mk(document.getElementById('c8'),{type:'bar',data:{labels:MEAS.labels,datasets:[{label:'Viewability %',data:MEAS.view,backgroundColor:SER[5],borderRadius:4},{label:'IVT %',data:MEAS.ivt,backgroundColor:SER[4],borderRadius:4}]},options:{plugins:{legend:{position:'bottom'}},scales:{x:{...gridOpt(),ticks:{color:tc().text,font:{size:9}}},y:gridOpt()}}});
+}
+function rPerformance(){
+  P.innerHTML=head('Dashboard 02 · Performance','Platform evaluation — targeting, buy, CTR, CAC, ROAS, LTV',
+    'Acquisition grid. Shading flags best ROAS & lowest CAC. Filter by buy type or sort any column.');
+  P.appendChild(buildTable(PERF,{roas:{min:1.9,max:6.4,good:'high'},cac:{min:14,max:52,good:'low'},ltv:{min:210,max:330,good:'high'}},'buy'));
+  const ch=document.createElement('div');ch.className='d-charts';
+  ch.innerHTML='<div class="d-chartcard"><div class="d-eyebrow">ROAS by platform</div><div class="d-chartbox"><canvas id="c1"></canvas></div></div><div class="d-chartcard"><div class="d-eyebrow">CAC vs LTV</div><div class="d-chartbox"><canvas id="c2"></canvas></div></div>';
+  P.appendChild(ch);
+  P.insertAdjacentHTML('beforeend','<div class="d-note"><b>Read:</b> 1P retargeting drives the best economics (CAC $14, ROAS 6.4×). CDP prospecting (0.77% CTR) beats interest control (0.46%) and lifts ROAS 2.1×→3.6×. <i>ROAS/CAC/LTV are representative performance benchmarks; CTR & base rates from delivered plans.</i></div>');
+  const lab=PERF.rows.map(r=>r.platform.split(' — ')[0]);
+  mk(document.getElementById('c1'),{type:'bar',data:{labels:lab,datasets:[{label:'ROAS',data:PERF.roasN,backgroundColor:PERF.roasN.map(v=>v>=3.5?SER[5]:v>=2.5?SER[2]:SER[4]),borderRadius:5}]},options:{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:gridOpt(),y:gridOpt()}}});
+  mk(document.getElementById('c2'),{type:'bar',data:{labels:lab,datasets:[{label:'CAC $',data:PERF.cacN,backgroundColor:SER[4],borderRadius:4},{label:'LTV $',data:PERF.ltvN,backgroundColor:SER[1],borderRadius:4}]},options:{plugins:{legend:{position:'bottom'}},scales:{x:{...gridOpt(),ticks:{color:tc().text,font:{size:8}}},y:gridOpt()}}});
+}
+function rAudience(){
+  const seg=(s)=>`<div class="d-seg"><h4>${s.n}</h4><div class="src">${s.src}</div><div class="perf">📈 ${s.perf}</div></div>`;
+  P.innerHTML=head('Dashboard 03 · Audience','Audience data segment framework — 1P &amp; 3P',
+    'How owned & third-party signals are sourced, matched and deployed across the funnel, with observed performance.')
+   +`<div class="d-kpis">
+      <div class="d-kpi"><div class="n">0.77%</div><div class="t">CDP (1P) CTR</div></div>
+      <div class="d-kpi"><div class="n">+67%</div><div class="t">CDP vs interest</div></div>
+      <div class="d-kpi"><div class="n">0.75%</div><div class="t">3P in-market CTR</div></div>
+      <div class="d-kpi"><div class="n">6.4×</div><div class="t">1P retargeting ROAS</div></div></div>
+     <div class="d-cols2"><div><div class="d-eyebrow">First-party (owned)</div>${AUD.first.map(seg).join('')}</div>
+      <div><div class="d-eyebrow">Third-party (scaled)</div>${AUD.third.map(seg).join('')}</div></div>
+     <div class="d-chartcard" style="margin-top:16px"><div class="d-eyebrow">Observed CTR by source — 1P vs 3P</div><div class="d-chartbox"><canvas id="c1"></canvas></div></div>
+     <div class="d-note"><b>Logic:</b> seed with 1P (CDP/pixel/CRM) → expand via lookalikes → prospect with 3P in-market & deterministic → suppress converters. Match-rate & signal-loss monitored to keep attribution intact.</div>`;
+  mk(document.getElementById('c1'),{type:'bar',data:{labels:AUD.ctrLabels,datasets:[{label:'CTR %',data:AUD.ctrVals,backgroundColor:AUD.ctrType.map(t=>t==='1P'?SER[5]:SER[2]),borderRadius:5}]},options:{plugins:{legend:{display:false}},scales:{x:{...gridOpt(),ticks:{color:tc().text,font:{size:9}}},y:gridOpt()}}});
+}
+function rCreative(){
+  P.innerHTML=head('Dashboard 04 · Creative','Creative testing framework — across platforms',
+    'Every creative scored on hook · message · offer · format · audience · funnel, with winning formats scaled.')
+   +'<div class="d-tablewrap"><table><thead><tr>'+CREATIVE.cols.map(c=>`<th>${c}</th>`).join('')+'</tr></thead><tbody>'
+   +CREATIVE.rows.map(r=>`<tr><td style="font-weight:700">${r.f}</td><td class="num">${r.yt}</td><td class="num">${r.meta}</td><td class="num">${r.dv}</td><td class="num">${r.ver}</td><td>${r.r}</td></tr>`).join('')
+   +'</tbody></table></div>'
+   +'<div class="d-charts"><div class="d-chartcard"><div class="d-eyebrow">Format performance — VTR</div><div class="d-chartbox"><canvas id="c1"></canvas></div></div>'
+   +'<div class="d-chartcard"><div class="d-eyebrow">Methodology</div><ul style="font-size:13px;color:var(--text);line-height:1.7;margin:8px 0 0;padding-left:18px"><li>Variables: hook · message · offer · format · audience · funnel</li><li>A/B & multivariate with holdout & geo splits</li><li>Validation via BLS (recall, favorability) + incrementality</li><li>Winners promoted to evergreen; losers retired weekly</li><li>Best: vernacular VTR 85.4% · teaser 27.7% (252% of plan)</li></ul></div></div>'
+   +'<div class="d-note"><b>Outcome:</b> a repeatable creative engine — winning formats identified fast and scaled into the assets behind the reach & CTR over-delivery.</div>';
+  mk(document.getElementById('c1'),{type:'bar',data:{labels:CREATIVE.fmtLabels,datasets:[{label:'VTR %',data:CREATIVE.fmtVtr,backgroundColor:ACC,borderRadius:5}]},options:{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:gridOpt(),y:gridOpt()}}});
+}
+function rWebmedia(){
+  P.innerHTML=head('Dashboard 05 · Measurement','Linking website metrics to media metrics',
+    'How upper-funnel media translated into search demand, on-site traffic and business signal during a phased launch.')
+   +'<div class="d-funnel">'+WM.flow.map(f=>`<div class="d-ff"><div class="t">${f.t}</div><div class="b">${f.b}</div><div class="s">${f.s}</div></div>`).join('')+'</div>'
+   +'<div class="d-charts"><div class="d-chartcard"><div class="d-eyebrow">Daily site traffic by phase</div><div class="d-chartbox"><canvas id="c1"></canvas></div></div>'
+   +'<div class="d-chartcard"><div class="d-eyebrow">Media clicks vs site sessions</div><div class="d-chartbox"><canvas id="c2"></canvas></div></div></div>'
+   +'<div class="d-tablewrap" style="margin-top:16px"><table><thead><tr><th>Media metric</th><th>→ Website / business metric</th><th>Observed linkage</th></tr></thead><tbody>'
+   +WM.link.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td style="color:var(--accent);font-weight:600">${r[2]}</td></tr>`).join('')+'</tbody></table></div>'
+   +'<div class="d-note"><b>Why it matters:</b> wiring GA4 to media delivery judges every line item on downstream visits & search lift — not platform clicks alone. Same discipline behind the incrementality & signal-loss frameworks.</div>';
+  mk(document.getElementById('c1'),{type:'bar',data:{labels:WM.phases,datasets:[{label:'Users',data:WM.users,backgroundColor:ACC,borderRadius:5},{label:'Sessions',data:WM.sessions,backgroundColor:SER[1],borderRadius:5},{label:'Pageviews',data:WM.pv,backgroundColor:SER[2],borderRadius:5}]},options:{plugins:{legend:{position:'bottom'}},scales:{x:gridOpt(),y:{...gridOpt(),ticks:{color:tc().text,callback:v=>v>=1000?(v/1000)+'k':v}}}}});
+  mk(document.getElementById('c2'),{type:'line',data:{labels:['Pre-buzz','Unveil','Sustenance'],datasets:[{label:'Media clicks (000)',data:WM.clicksK,borderColor:SER[4],backgroundColor:'rgba(251,113,133,.15)',tension:.35,fill:true,yAxisID:'y'},{label:'Site sessions',data:WM.sessions,borderColor:SER[1],backgroundColor:'rgba(56,189,248,.12)',tension:.35,fill:true,yAxisID:'y1'}]},options:{plugins:{legend:{position:'bottom'}},scales:{x:gridOpt(),y:{position:'left',...gridOpt()},y1:{position:'right',grid:{drawOnChartArea:false},ticks:{color:tc().text}}}}});
+  // ---- HubSpot website→media full-funnel ----
+  P.insertAdjacentHTML('beforeend',
+    '<div style="margin-top:28px;border-top:1px dashed var(--border);padding-top:22px"></div>'+
+    '<div class="d-eyebrow">HubSpot · website → media full-funnel</div>'+
+    '<h3 style="font-size:18px;margin-bottom:6px">Full-funnel by channel — sessions → contacts → MQL → SQL → customer</h3>'+
+    '<p class="d-lead">Wired to the live HubSpot taxonomy (original-source channels &amp; lifecycle stages pulled from the connected portal). Shading flags weak CVR / high CAC; the Flag column surfaces concerns. <i>Figures illustrative pending a populated portal — the connected account currently holds only HubSpot sample contacts.</i></p>'+
+    '<div class="d-kpis">'+
+     '<div class="d-kpi"><div class="n">148.9K</div><div class="t">Sessions / mo</div></div>'+
+     '<div class="d-kpi"><div class="n">4,747</div><div class="t">New contacts</div></div>'+
+     '<div class="d-kpi"><div class="n">638</div><div class="t">SQLs</div></div>'+
+     '<div class="d-kpi"><div class="n">3.2%</div><div class="t">Blended site CVR</div></div>'+
+    '</div>');
+  P.appendChild(buildTable(HSFUNNEL,HSFUNNEL.heat,null));
+  const ch3=document.createElement('div');ch3.className='d-charts';
+  ch3.innerHTML='<div class="d-chartcard"><div class="d-eyebrow">Stage-to-stage conversion</div><div class="d-chartbox"><canvas id="c5"></canvas></div></div><div class="d-chartcard"><div class="d-eyebrow">Customers by channel</div><div class="d-chartbox"><canvas id="c6"></canvas></div></div>';
+  P.appendChild(ch3);
+  P.insertAdjacentHTML('beforeend','<div class="d-eyebrow" style="margin-top:18px">⚑ Flagged concerns &amp; actions</div>'+
+    HSFUNNEL.flags.map(f=>`<div class="d-note" style="border-left-color:${f[0]==='▲'?'#FB7185':f[0]==='◐'?'#FBBF24':'#34D399'}"><b>${f[0]} ${f[1]}:</b> ${f[2]}</div>`).join(''));
+  mk(document.getElementById('c5'),{type:'bar',data:{labels:HSFUNNEL.stageLabels,datasets:[{label:'Conversion %',data:HSFUNNEL.stagePct,backgroundColor:[SER[4],SER[2],SER[1],SER[5]],borderRadius:5}]},options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+'%'}}},scales:{x:{...gridOpt(),ticks:{color:tc().text,font:{size:9}}},y:{...gridOpt(),ticks:{color:tc().text,callback:v=>v+'%'}}}}});
+  mk(document.getElementById('c6'),{type:'bar',data:{labels:HSFUNNEL.custLabels,datasets:[{label:'Customers',data:HSFUNNEL.custVals,backgroundColor:HSFUNNEL.custVals.map(v=>v>=27?SER[5]:v>=15?SER[2]:SER[4]),borderRadius:5}]},options:{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:gridOpt(),y:gridOpt()}}});
+}
+const R={branding:rBranding,performance:rPerformance,audience:rAudience,creative:rCreative,webmedia:rWebmedia};
+let current='branding';
+function render(){destroyCharts();(R[current]||rBranding)();}
+window.__renderDash=render;
+document.querySelectorAll('#dashTabs button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('#dashTabs button').forEach(x=>{x.classList.toggle('active',x===b);x.setAttribute('aria-selected',x===b);});
+  current=b.dataset.d;render();}));
+// lazy first render when section nears viewport (after Chart.js defer loads)
+function boot(){render();}
+if(document.readyState==='complete')boot();
+else window.addEventListener('load',boot);
+})();
+</script>
+</body>
+</html>
